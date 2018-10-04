@@ -27,7 +27,8 @@ class H0xView(object):
     def on_open(self):
         file_opt = options = {}
         options['defaultextension'] = ''
-        options['filetypes'] = [('all files', '.*')]
+        if sys.platform != "darwin":
+            options['filetypes'] = [('all files', '*.*')]
         options['initialdir'] = configManager.get_config("INITIAL_DIR", '\\')
         options['initialfile'] = configManager.get_config("INITIAL_FILE", 'myfile.hex')
         options['parent'] = self.root
@@ -47,7 +48,8 @@ class H0xView(object):
     def on_saveas(self):
         file_opt = options = {}
         options['defaultextension'] = ''
-        options['filetypes'] = [('all files', '.*')]
+        if sys.platform != "darwin":
+            options['filetypes'] = [('all files', '.*')]
         options['initialdir'] = configManager.get_config("INITIAL_DIR", '\\')
         options['initialfile'] = configManager.get_config("INITIAL_FILE", 'myfile.hex')
         options['parent'] = self.root
